@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="420" viewBox="0 0 1200 420" role="img" aria-labelledby="title desc">
+<title id="title">Kuper MCP: каталог, меню и покупки</title><desc id="desc">Тёмно-зелёный баннер с оранжевым знаком пакета продуктов и карточками возможностей сервера.</desc>
+<defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#112D25"/><stop offset="1" stop-color="#223F32"/></linearGradient><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#fff" stroke-opacity=".035"/></pattern></defs>
+<rect width="1200" height="420" rx="28" fill="url(#bg)"/><rect width="1200" height="420" rx="28" fill="url(#grid)"/>
+<circle cx="1130" cy="20" r="210" fill="#FA8C45" opacity=".06"/><circle cx="1030" cy="420" r="150" fill="#D0E9B4" opacity=".06"/>
+<g font-family="Segoe UI, Arial, sans-serif"><rect x="52" y="46" width="152" height="30" rx="15" fill="#D5E8BF"/><text x="128" y="66" font-size="12" font-weight="700" text-anchor="middle" fill="#15372A" letter-spacing="2">MCP / HTTP / STDIO</text>
+<text x="50" y="153" font-size="72" font-weight="750" fill="#FFF9EC" letter-spacing="-2">Kuper <tspan fill="#F9A364">MCP</tspan></text>
+<text x="54" y="202" font-size="25" fill="#D4DDCB">Меньше рутины. Больше вкуса.</text>
+<text x="54" y="241" font-size="17" fill="#A9BEAF">Каталог по адресу · Меню по бюджету · Полные упаковки</text>
+<g transform="translate(54 299)"><rect width="152" height="56" rx="12" fill="#fff" fill-opacity=".07"/><text x="18" y="23" font-size="20" font-weight="700" fill="#F9A364">13</text><text x="18" y="43" font-size="12" fill="#CCD8C8">инструментов</text></g>
+<g transform="translate(220 299)"><rect width="152" height="56" rx="12" fill="#fff" fill-opacity=".07"/><text x="18" y="23" font-size="20" font-weight="700" fill="#D5E8BF">15</text><text x="18" y="43" font-size="12" fill="#CCD8C8">стартовых рецептов</text></g>
+<g transform="translate(386 299)"><rect width="152" height="56" rx="12" fill="#fff" fill-opacity=".07"/><text x="18" y="23" font-size="20" font-weight="700" fill="#F9A364">1–7</text><text x="18" y="43" font-size="12" fill="#CCD8C8">дней планирования</text></g>
+<g transform="translate(790 95)"><rect x="14" y="76" width="210" height="200" rx="24" fill="#0B211A" opacity=".4"/><path d="M30 56H210L228 262H12Z" fill="#F9A364"/><path d="M75 76V53a45 45 0 0 1 90 0v23" fill="none" stroke="#F9A364" stroke-width="14" stroke-linecap="round"/>
+<circle cx="120" cy="161" r="58" fill="#FFF5DB"/><circle cx="120" cy="161" r="39" fill="#E2EBCF"/><path d="m99 162 14 14 30-34" fill="none" stroke="#2B5940" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/><rect x="54" y="237" width="132" height="5" rx="3" fill="#A75D31" opacity=".5"/></g>
+<text x="910" y="392" text-anchor="middle" font-size="12" fill="#A9BEAF" letter-spacing="2">ГОТОВ К ЗАПУСКУ В DOCKER</text></g></svg>

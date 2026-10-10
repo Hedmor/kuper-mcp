@@ -1,0 +1,34 @@
+{
+  "name": "kuper-mcp-monorepo",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.18.0",
+    "pnpm": ">=10"
+  },
+  "scripts": {
+    "build": "tsc -b",
+    "typecheck": "tsc -b --pretty false",
+    "test": "node --conditions=source --test packages/core/test/*.test.ts packages/planner/test/*.test.ts packages/scraper/test/*.test.ts",
+    "test:mcp": "node --conditions=source --test apps/mcp/test/*.test.ts",
+    "check": "pnpm run format:check && pnpm run lint && pnpm run typecheck && pnpm test && pnpm run test:mcp",
+    "start": "node scripts/start.mjs",
+    "dev": "node --env-file-if-exists=.env --conditions=source --import tsx apps/mcp/src/index.ts",
+    "scrape:smoke": "node --env-file-if-exists=.env --conditions=source --import tsx packages/scraper/src/smoke.ts",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "oxlint --deny-warnings apps packages",
+    "lint:fix": "oxlint --deny-warnings --fix apps packages",
+    "docker:build": "docker build --tag kuper-mcp:local .",
+    "docker:smoke": "node scripts/smoke-docker.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.0",
+    "oxlint": "1.87.0",
+    "prettier": "3.9.9",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3"
+  },
+  "packageManager": "pnpm@12.10.1"
+}

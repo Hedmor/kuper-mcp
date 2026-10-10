@@ -1,0 +1,13 @@
+node_modules/
+dist/
+.env
+.env.*
+!.env.example
+.local/
+coverage/
+*.tsbuildinfo
+*.log
+*.tgz
+.DS_Store
+Thumbs.db
+*.tar

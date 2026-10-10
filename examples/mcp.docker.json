@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "kuper": {
+      "command": "docker",
+      "args": ["run", "--rm", "--init", "-i", "kuper-mcp:local"]
+    }
+  }
+}

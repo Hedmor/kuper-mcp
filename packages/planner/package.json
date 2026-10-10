@@ -1,0 +1,22 @@
+{
+  "name": "@kuper/planner",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "source": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./recipes": {
+      "source": "./src/recipes.ts",
+      "types": "./dist/recipes.d.ts",
+      "default": "./dist/recipes.js"
+    }
+  },
+  "types": "./dist/index.d.ts",
+  "dependencies": {
+    "@kuper/core": "workspace:*"
+  }
+}

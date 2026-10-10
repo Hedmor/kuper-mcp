@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "kuper": {
+      "command": "node",
+      "args": ["/absolute/path/to/kuper-mcp/scripts/start.mjs"]
+    }
+  }
+}

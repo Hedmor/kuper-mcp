@@ -1,0 +1,11 @@
+services:
+  kuper:
+    image: kuper-mcp:local
+    build: .
+    init: true
+    stdin_open: true
+    tty: false
+    environment:
+      KUPER_MIN_INTERVAL_MS: ${KUPER_MIN_INTERVAL_MS:-1500}
+      KUPER_CACHE_TTL_MS: ${KUPER_CACHE_TTL_MS:-300000}
+      KUPER_TIMEOUT_MS: ${KUPER_TIMEOUT_MS:-30000}
