@@ -109,6 +109,25 @@ node scripts/smoke-docker.mjs
 Она проверяет MCP initialize, список инструментов, статус и ресурс рецептов без обращения
 к Куперу. При сборке отдельно проверяется загрузка нативной библиотеки HTTPcloak.
 
+### Подключение Docker к Codex
+
+После сборки образа `kuper-mcp:local` выполните:
+
+```sh
+codex mcp add kuper -- docker run --rm --init -i kuper-mcp:local
+```
+
+Либо добавьте содержимое [examples/codex.docker.toml](examples/codex.docker.toml)
+в `~/.codex/config.toml` (Windows: `%USERPROFILE%\.codex\config.toml`). Если секция
+`[mcp_servers.kuper]` уже существует, обновите её вместо создания второй.
+Перезапустите Codex; в CLI проверьте подключение командой `/mcp`.
+
+Docker Desktop должен работать в режиме Linux containers. Codex сам запускает
+контейнер через stdio и останавливает его при закрытии соединения; отдельный
+`docker compose up -d` и публикация порта не требуются.
+
+[Официальная инструкция Codex MCP](https://developers.openai.com/codex/mcp).
+
 ## Пример запроса
 
 > Составь меню на день для одного человека за 1000 ₽ в Новосибирске.
