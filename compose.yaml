@@ -3,9 +3,13 @@ services:
     image: kuper-mcp:local
     build: .
     init: true
-    stdin_open: true
-    tty: false
+    entrypoint: ['node', 'apps/mcp/dist/http-main.js']
+    restart: unless-stopped
+    ports:
+      - '127.0.0.1:8815:8815'
     environment:
+      KUPER_HTTP_HOST: '0.0.0.0'
+      KUPER_HTTP_PORT: '8815'
       KUPER_MIN_INTERVAL_MS: ${KUPER_MIN_INTERVAL_MS:-1500}
       KUPER_CACHE_TTL_MS: ${KUPER_CACHE_TTL_MS:-300000}
       KUPER_TIMEOUT_MS: ${KUPER_TIMEOUT_MS:-30000}

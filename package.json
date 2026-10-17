@@ -11,7 +11,7 @@
     "build": "tsc -b",
     "typecheck": "tsc -b --pretty false",
     "test": "node --conditions=source --test packages/core/test/*.test.ts packages/planner/test/*.test.ts packages/scraper/test/*.test.ts",
-    "test:mcp": "node --conditions=source --test apps/mcp/test/*.test.ts",
+    "test:mcp": "node --conditions=source --import tsx --test apps/mcp/test/*.test.ts",
     "check": "pnpm run format:check && pnpm run lint && pnpm run typecheck && pnpm test && pnpm run test:mcp",
     "start": "node scripts/start.mjs",
     "dev": "node --env-file-if-exists=.env --conditions=source --import tsx apps/mcp/src/index.ts",

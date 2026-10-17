@@ -1,5 +1,4 @@
 [mcp_servers.kuper]
-command = "docker"
-args = ["run", "--rm", "--init", "-i", "kuper-mcp:local"]
+url = "http://127.0.0.1:8815/mcp"
 startup_timeout_sec = 60
 tool_timeout_sec = 120
