@@ -47,6 +47,22 @@ test('schema changes are surfaced instead of fabricated empty results', async ()
   await cat.close();
 });
 
+test('pagination uses API metadata even when a page contains fewer than 24 products', async () => {
+  const products = [{ id: 1, name: 'Meat', stock: 59 }];
+  const cat = catalog({ products, meta: { current_page: 1, next_page: 2, total_pages: 25 } });
+  assert.equal((await cat.searchProducts('10', 'meat')).nextPage, 2);
+  await cat.close();
+  const last = catalog({
+    products: Array.from({ length: 24 }, () => products[0]),
+    meta: { next_page: null },
+  });
+  assert.equal((await last.searchProducts('10', 'meat')).nextPage, null);
+  await last.close();
+  const invalid = catalog({ products, meta: { next_page: 1 } });
+  await assert.rejects(invalid.searchProducts('10', 'meat'), /pagination/);
+  await invalid.close();
+});
+
 test('candidate matching never selects an ingredient automatically', async () => {
   const cat = catalog({
     products: [

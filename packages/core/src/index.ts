@@ -140,14 +140,16 @@ export function normalizeProduct(raw: unknown, storeId: string, observedAt: stri
       ? stock.available
       : typeof p.available === 'boolean'
         ? p.available
-        : null;
+        : typeof p.stock === 'number' && Number.isFinite(p.stock) && p.stock >= 0
+          ? p.stock > 0
+          : null;
 
   return {
     id,
     storeId,
     name: p.name.trim(),
     priceRub: number(p.price),
-    available: availability,
+    available: p.active === false ? false : availability,
     packageSize: size,
     priceType,
     volumeLabel: label,

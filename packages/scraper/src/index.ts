@@ -194,13 +194,29 @@ export class KuperCatalog {
     const products = collection(result.data, 'products').map((raw) =>
       normalizeProduct(raw, storeId, result.observedAt),
     );
+    const root = record(result.data);
+    const meta = record(root.meta ?? record(root.data).meta);
+    let nextPage = products.length === 24 ? page + 1 : null;
+    if (Object.hasOwn(meta, 'next_page')) {
+      if (meta.next_page === null) {
+        nextPage = null;
+      } else if (
+        typeof meta.next_page === 'number' &&
+        Number.isInteger(meta.next_page) &&
+        meta.next_page > page
+      ) {
+        nextPage = meta.next_page;
+      } else {
+        throw new KuperError('SCHEMA_CHANGED', 'Invalid product pagination metadata');
+      }
+    }
 
     return {
       products,
       storeId,
       query,
       page,
-      nextPage: products.length === 24 ? page + 1 : null,
+      nextPage,
       observedAt: result.observedAt,
       cached: result.cached,
     };
