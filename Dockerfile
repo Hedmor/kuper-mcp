@@ -13,7 +13,7 @@ COPY packages/planner/package.json ./packages/planner/package.json
 COPY packages/scraper/package.json ./packages/scraper/package.json
 RUN pnpm install --frozen-lockfile --prod
 # Загрузка нативной библиотеки проверяется при сборке, без запросов к Куперу.
-RUN cd packages/scraper && node --input-type=module -e "import { Session } from 'httpcloak'; const s = new Session({ preset: 'chrome-latest' }); s.close();"
+RUN cd packages/scraper && node --input-type=module -e "import { Session } from 'httpcloak'; const s = new Session({ preset: 'chrome-latest-windows' }); s.close();"
 
 FROM dependencies AS build
 RUN pnpm install --frozen-lockfile --prod=false
