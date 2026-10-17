@@ -108,6 +108,25 @@ test('retry 5xx but stop immediately on challenge', async () => {
   await html.transport.close();
 });
 
+test('VPN policy pages report network restriction without leaking page contents or retrying', async () => {
+  const { transport, calls } = setup([
+    {
+      status: 403,
+      contentType: 'text/html',
+      body: '<html>Отключите VPN IP: private-address ID: private-id</html>',
+    },
+  ]);
+  await assert.rejects(transport.get('/api/v2/products'), (error) => {
+    assert.ok(error instanceof KuperError);
+    assert.equal(error.code, 'SESSION_REQUIRED');
+    assert.match(error.message, /VPN\/network policy/);
+    assert.doesNotMatch(error.message, /private/);
+    return true;
+  });
+  assert.equal(calls.length, 1);
+  await transport.close();
+});
+
 test('allowlist, invalid JSON, closure and retry-after dates', async () => {
   const { transport, closed } = setup([{ body: 'invalid' }]);
 

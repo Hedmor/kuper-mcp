@@ -32,6 +32,7 @@ COPY --from=build /app/apps/mcp/dist ./apps/mcp/dist
 COPY --from=build /app/packages/core/dist ./packages/core/dist
 COPY --from=build /app/packages/planner/dist ./packages/planner/dist
 COPY --from=build /app/packages/scraper/dist ./packages/scraper/dist
+COPY scripts/diagnose-catalog.mjs ./scripts/diagnose-catalog.mjs
 USER node
 # stdio принадлежит MCP-клиенту: запускайте с -i, без TTY.
 ENTRYPOINT ["node", "apps/mcp/dist/index.js"]

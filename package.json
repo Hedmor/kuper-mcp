@@ -16,6 +16,7 @@
     "start": "node scripts/start.mjs",
     "dev": "node --env-file-if-exists=.env --conditions=source --import tsx apps/mcp/src/index.ts",
     "scrape:smoke": "node --env-file-if-exists=.env --conditions=source --import tsx packages/scraper/src/smoke.ts",
+    "scrape:diagnose": "node --env-file-if-exists=.env --conditions=source scripts/diagnose-catalog.mjs",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "lint": "oxlint --deny-warnings apps packages",

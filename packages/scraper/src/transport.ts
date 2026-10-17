@@ -168,9 +168,15 @@ export class CatalogTransport {
     }
 
     if ([401, 403].includes(reply.status) || (reply.status >= 300 && reply.status < 400)) {
+      const vpnPolicy =
+        reply.status === 403 && /vpn/i.test(reply.body) && /отключите/i.test(reply.body);
       throw new KuperError(
         'SESSION_REQUIRED',
-        'Kuper denied this session; check network access and retry later',
+        vpnPolicy
+          ? 'Kuper returned HTTP 403 with its VPN/network policy page; session reset does not resolve this network restriction'
+          : 'Kuper denied this session (HTTP ' +
+              reply.status +
+              '); check network access and retry later',
       );
     }
 
