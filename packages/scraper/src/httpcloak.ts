@@ -3,6 +3,9 @@ import type { Session, SessionOptions } from 'httpcloak';
 import type { HttpReply, HttpSession } from './transport.ts';
 
 export const HTTP_CATALOG_ORIGIN = 'https://kuper.ru';
+// The generic alias selects the host OS. Kuper rejects the Linux variant with its
+// VPN policy page, so keep the same reviewed client profile on every platform.
+export const HTTP_CATALOG_PRESET = 'chrome-latest-windows';
 
 type Client = Pick<Session, 'get' | 'close'>;
 type Factory = (options: SessionOptions) => Promise<Client>;
@@ -32,7 +35,7 @@ export class HttpcloakSession implements HttpSession {
 
     try {
       this.client ??= this.factory({
-        preset: 'chrome-latest',
+        preset: HTTP_CATALOG_PRESET,
         timeout: this.timeoutMs / 1000,
         retry: 0,
         verify: true,

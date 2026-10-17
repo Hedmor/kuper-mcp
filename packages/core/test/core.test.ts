@@ -45,6 +45,17 @@ test('reject changed schema and unsafe links', () => {
   assert.equal(safeKuperUrl('https://x:y@web.kuper.ru/a'), null);
 });
 
+test('numeric catalog stock marks known availability; inactive and unknown stock remain safe', () => {
+  const product = (fields: Record<string, unknown>) =>
+    normalizeProduct({ id: 1, name: 'Meat', ...fields }, '10', time);
+  assert.equal(product({ stock: 59 }).available, true);
+  assert.equal(product({ stock: 0 }).available, false);
+  assert.equal(product({ stock: 59, active: false }).available, false);
+  for (const stock of [-1, NaN, '59', undefined]) {
+    assert.equal(product({ stock }).available, null);
+  }
+});
+
 test('unit prices remain grouped by dimension', () => {
   const products = [
     normalizeProduct(

@@ -36,6 +36,7 @@ test('HTTPcloak uses one session, seconds timeout, array headers and resets clea
   assert.equal(reply.contentType, 'application/json');
   await s.session.request('/api/v2/stores');
   assert.equal(s.options.length, 1);
+  assert.equal(s.options[0]!.preset, 'chrome-latest-windows');
   assert.equal(s.options[0]!.timeout, 1.5);
   assert.equal(s.options[0]!.retry, 0);
   assert.equal(s.options[0]!.verify, true);

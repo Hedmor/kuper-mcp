@@ -5,7 +5,7 @@
 | Tool                       | Назначение                                                          |
 | -------------------------- | ------------------------------------------------------------------- |
 | kuper_session_status       | Очередь, кэш, cooldown и последняя ошибка; не проверяет авторизацию |
-| kuper_session_reset        | Закрытие HTTP/браузерной сессии и очистка кэша                      |
+| kuper_session_reset        | Закрытие HTTP-сессии и очистка кэша с сохранением cooldown          |
 | kuper_list_cities          | Города из app configuration, если поле доступно                     |
 | kuper_suggest_addresses    | Подсказки адресов с явным cityId                                    |
 | kuper_list_stores          | Магазины по точным latitude/longitude, страницы по 24               |
